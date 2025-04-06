@@ -27,6 +27,7 @@ implementation {
     }
     
     rmsg->timestamp = call LocalTime.get();
+    rmsg->diff = 0; // no diff computed at beacon
     
     err = call AMSend.send(AM_BROADCAST_ADDR, &beaconMsg, sizeof(rbs_msg));
     if (err == SUCCESS) {
@@ -35,6 +36,6 @@ implementation {
   }
 
   event void AMSend.sendDone(message_t* msg, error_t error) {
-    // Optional: handle send completion.
+    // Optionally handle send completion.
   }
 }
